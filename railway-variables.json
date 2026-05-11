@@ -1,0 +1,91 @@
+{
+  "railwayVariables": [
+    {
+      "name": "AUTHENTICATION_TYPE",
+      "value": "apikey",
+      "description": "Tipo de autenticação da Evolution API",
+      "required": true
+    },
+    {
+      "name": "AUTHENTICATION_API_KEY",
+      "value": "GERAR_COM: openssl rand -hex 32",
+      "description": "Chave segura para autenticação (gere uma nova)",
+      "required": true,
+      "instructions": "Execute no terminal: openssl rand -hex 32 e copie a saída"
+    },
+    {
+      "name": "DATABASE_ENABLED",
+      "value": "true",
+      "description": "Ativar suporte a banco de dados",
+      "required": true
+    },
+    {
+      "name": "DATABASE_PROVIDER",
+      "value": "postgresql",
+      "description": "Tipo de banco de dados (NUNCA DEIXE VAZIO!)",
+      "required": true,
+      "critical": true
+    },
+    {
+      "name": "DATABASE_CONNECTION_URI",
+      "value": "${{Postgres.DATABASE_URL}}",
+      "description": "Connection string do PostgreSQL (Railway substitui automaticamente)",
+      "required": true
+    },
+    {
+      "name": "DATABASE_SAVE_DATA_INSTANCE",
+      "value": "true",
+      "description": "Salvar dados da instância no banco",
+      "required": true
+    },
+    {
+      "name": "DATABASE_SAVE_DATA_NEW_MESSAGE",
+      "value": "true",
+      "description": "Salvar novas mensagens no banco",
+      "required": true
+    },
+    {
+      "name": "DATABASE_SAVE_MESSAGE_UPDATE",
+      "value": "true",
+      "description": "Salvar atualizações de mensagens",
+      "required": true
+    },
+    {
+      "name": "DATABASE_SAVE_DATA_CONTACTS",
+      "value": "true",
+      "description": "Salvar dados de contatos",
+      "required": true
+    },
+    {
+      "name": "DATABASE_SAVE_DATA_CHATS",
+      "value": "true",
+      "description": "Salvar dados de conversas",
+      "required": true
+    },
+    {
+      "name": "CACHE_REDIS_ENABLED",
+      "value": "false",
+      "description": "Redis desabilitado (opcional)",
+      "required": true
+    },
+    {
+      "name": "DEL_INSTANCE",
+      "value": "false",
+      "description": "Não deletar instância automaticamente",
+      "required": true
+    }
+  ],
+  "instructions": {
+    "step1": "Gere a chave: openssl rand -hex 32",
+    "step2": "No painel Railway, clique no serviço Evolution",
+    "step3": "Abra a aba 'Variables'",
+    "step4": "Adicione TODAS as variáveis acima",
+    "step5": "Clique em 'Redeploy'",
+    "step6": "Aguarde 2-3 minutos"
+  },
+  "summary": {
+    "total_variables": 12,
+    "critical": ["AUTHENTICATION_API_KEY", "DATABASE_PROVIDER", "DATABASE_CONNECTION_URI"],
+    "all_required": true
+  }
+}
